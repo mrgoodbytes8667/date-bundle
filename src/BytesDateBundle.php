@@ -1,6 +1,6 @@
 <?php
 
-namespace Bytes\Date;
+namespace Bytes\DateBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

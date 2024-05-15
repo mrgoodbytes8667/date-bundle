@@ -1,8 +1,8 @@
 <?php
 
-namespace Bytes\Date\Tests\Objects;
+namespace Bytes\DateBundle\Tests\Objects;
 
-use Bytes\Date\Helpers\DateTimeHelper;
+use Bytes\DateBundle\Helpers\DateTimeHelper;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 

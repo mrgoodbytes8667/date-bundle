@@ -1,9 +1,9 @@
 <?php
 
-namespace Bytes\Date\Tests\Objects;
+namespace Bytes\DateBundle\Tests\Objects;
 
-use Bytes\Date\Exception\LargeDateIntervalException;
-use Bytes\Date\Objects\ComparableDateInterval;
+use Bytes\DateBundle\Exception\LargeDateIntervalException;
+use Bytes\DateBundle\Objects\ComparableDateInterval;
 use DateInterval;
 use DateTimeImmutable;
 use Exception;

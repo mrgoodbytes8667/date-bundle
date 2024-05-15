@@ -1,6 +1,6 @@
 <?php
 
-namespace Bytes\Date\Enums;
+namespace Bytes\DateBundle\Enums;
 
 use Bytes\EnumSerializerBundle\Enums\BackedEnumInterface;
 use Bytes\EnumSerializerBundle\Enums\BackedEnumTrait;

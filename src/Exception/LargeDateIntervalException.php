@@ -1,6 +1,6 @@
 <?php
 
-namespace Bytes\Date\Exception;
+namespace Bytes\DateBundle\Exception;
 
 use DateInterval;
 use LogicException;

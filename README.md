@@ -49,7 +49,7 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    Bytes\Date\BytesDateBundle::class => ['all' => true],
+    Bytes\DateBundle\BytesDateBundle::class => ['all' => true],
 ];
 ```
 

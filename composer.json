@@ -27,8 +27,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Bytes\\Date\\": "src/",
-            "Bytes\\Date\\Tests\\": "Tests/"
+            "Bytes\\DateBundle\\": "src/",
+            "Bytes\\DateBundle\\Tests\\": "Tests/"
         }
     },
     "minimum-stability": "dev"

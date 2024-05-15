@@ -1,9 +1,9 @@
 <?php
 
-namespace Bytes\Date\Helpers;
+namespace Bytes\DateBundle\Helpers;
 
 use BadMethodCallException;
-use Bytes\Date\Enums\DayOfWeek;
+use Bytes\DateBundle\Enums\DayOfWeek;
 use DateInterval;
 use DatePeriod;
 use DateTime;

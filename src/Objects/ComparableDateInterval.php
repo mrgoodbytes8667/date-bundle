@@ -1,9 +1,9 @@
 <?php
 
-namespace Bytes\Date\Objects;
+namespace Bytes\DateBundle\Objects;
 
 use BadMethodCallException;
-use Bytes\Date\Exception\LargeDateIntervalException;
+use Bytes\DateBundle\Exception\LargeDateIntervalException;
 use DateInterval;
 use DateTime;
 use Exception;

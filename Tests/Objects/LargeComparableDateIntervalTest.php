@@ -1,8 +1,8 @@
 <?php
 
-namespace Bytes\Date\Tests\Objects;
+namespace Bytes\DateBundle\Tests\Objects;
 
-use Bytes\Date\Objects\LargeComparableDateInterval;
+use Bytes\DateBundle\Objects\LargeComparableDateInterval;
 use DateInterval;
 use DateTimeImmutable;
 
