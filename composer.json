@@ -1,0 +1,35 @@
+{
+    "name": "mrgoodbytes8667/date-bundle",
+    "description": "A Symfony bundle for working with dates",
+    "type": "symfony-bundle",
+    "license": "CC-BY-NC-4.0",
+    "require": {
+        "php": "^8.2",
+        "mrgoodbytes8667/enum-serializer-bundle": "^5.0 | ^6.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.4",
+        "mrgoodbytes8667/test-common": "^0.2.5 | ^0.3 | ^0.4.2",
+        "mrgoodbytes8667/test-common-faker": ">=0.3.3",
+        "symfony/test-pack": "^1.0.9"
+    },
+    "authors": [
+        {
+            "name": "MrGoodBytes",
+            "email": "bytes@mrgoodbytes.dev"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "conflict": {
+        "phpunit/phpunit": "<9.5 | 9.5.8 | >=10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bytes\\Date\\": "src/",
+            "Bytes\\Date\\Tests\\": "Tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}
