@@ -1,0 +1,2 @@
+ignore:
+  - ".php-cs-fixer.dist.php"
