@@ -31,4 +31,3 @@ jobs:
     with:
       phpUnitVersion: 9.6
       symfony: 7.1
-      minStability: 'dev'
