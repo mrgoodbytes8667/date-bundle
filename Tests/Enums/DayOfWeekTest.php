@@ -2,8 +2,8 @@
 
 namespace Bytes\DateBundle\Tests\Enums;
 
-use Bytes\EnumSerializerBundle\PhpUnit\EnumAssertions;
 use Bytes\DateBundle\Enums\DayOfWeek;
+use Bytes\EnumSerializerBundle\PhpUnit\EnumAssertions;
 use Generator;
 use PHPUnit\Framework\TestCase;
 

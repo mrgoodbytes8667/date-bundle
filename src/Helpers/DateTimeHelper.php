@@ -101,6 +101,7 @@ class DateTimeHelper
         if (is_null($then)) {
             $then = new DateTimeImmutable();
         }
+
         $then = $then->setTimezone(new DateTimeZone($tz));
 
         return static::create(now: $now, hour: $hour ?? static::getHourFromDate($then), minute: $minute ?? static::getMinuteFromDate($then), second: $second ?? static::getSecondFromDate($then));
@@ -186,6 +187,7 @@ class DateTimeHelper
         if (is_null($then)) {
             return null;
         }
+
         $diff = static::nowDiff($then);
         $days = $diff->days;
         if (0 !== $diff->invert) {
@@ -215,6 +217,7 @@ class DateTimeHelper
         if ('toDoctrine' === $name && count($arguments) > 0 && array_key_exists(0, $arguments)) {
             return static::toImmutableUTC($arguments[0]);
         }
+
         $getFromDatePart = u($name)->before('FromDate')->after('get')->lower()->toString();
         $toInt = true;
         switch ($getFromDatePart) {
