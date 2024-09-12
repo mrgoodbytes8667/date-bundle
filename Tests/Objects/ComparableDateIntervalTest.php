@@ -321,4 +321,25 @@ class ComparableDateIntervalTest extends TestCase
         $this->expectException(Exception::class);
         new ($this->getTestClass())('abc123');
     }
+
+    /**
+     * @dataProvider provideIsEmpty
+     *
+     * @return void
+     *
+     * @throws Exception
+     */
+    public function testIsEmpty($input, $expected)
+    {
+        self::assertSame($expected, ComparableDateInterval::isEmpty($input));
+    }
+
+    public static function provideIsEmpty(): Generator
+    {
+        yield ['input' => new DateInterval('P0D'), 'expected' => true];
+        yield ['input' => new DateInterval('P1D'), 'expected' => false];
+        yield ['input' => 0, 'expected' => true];
+        yield ['input' => 1, 'expected' => false];
+        yield ['input' => -1, 'expected' => false];
+    }
 }
