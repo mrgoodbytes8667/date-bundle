@@ -73,7 +73,7 @@ class ComparableDateInterval extends DateInterval
     /**
      * @return float
      *
-     * @throws \Bytes\Date\Exception\LargeDateIntervalException
+     * @throws LargeDateIntervalException
      *
      * @see https://stackoverflow.com/a/28418969/7906133
      */
@@ -104,7 +104,7 @@ class ComparableDateInterval extends DateInterval
     }
 
     /**
-     * @throws \Bytes\Date\Exception\LargeDateIntervalException
+     * @throws LargeDateIntervalException
      */
     protected static function parseYears(DateInterval $interval): int
     {
@@ -116,7 +116,7 @@ class ComparableDateInterval extends DateInterval
     }
 
     /**
-     * @throws \Bytes\Date\Exception\LargeDateIntervalException
+     * @throws LargeDateIntervalException
      */
     protected static function parseMonths(DateInterval $interval): int
     {
