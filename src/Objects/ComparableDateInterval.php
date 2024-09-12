@@ -313,4 +313,12 @@ class ComparableDateInterval extends DateInterval
     {
         return static::getTotalSeconds($this);
     }
+
+    /**
+     * @throws Exception
+     */
+    public static function isEmpty(DateInterval|int $interval): bool
+    {
+        return empty(self::normalizeToSeconds($interval));
+    }
 }
