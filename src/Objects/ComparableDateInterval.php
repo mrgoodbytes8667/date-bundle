@@ -271,7 +271,7 @@ class ComparableDateInterval extends DateInterval
             $seconds = new DateInterval($seconds);
         }
 
-        return ComparableDateInterval::getTotalSeconds($seconds);
+        return (int) ComparableDateInterval::getTotalSeconds($seconds);
     }
 
     public static function secondsToInterval(int $seconds): DateInterval
