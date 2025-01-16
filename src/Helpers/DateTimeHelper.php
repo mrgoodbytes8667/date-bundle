@@ -12,6 +12,8 @@ use DateTimeInterface;
 use DateTimeZone;
 use Exception;
 use Illuminate\Support\Arr;
+use InvalidArgumentException;
+use Symfony\Component\Clock\Clock;
 
 use function Symfony\Component\String\u;
 
@@ -48,6 +50,13 @@ class DateTimeHelper
      * @var string
      */
     public const FORMAT_EASYADMIN_SHORT = 'n/j @ g:i a T';
+
+    /**
+     * @var string
+     *
+     * @example Thursday, December 5, 2024 @ 6:35 pm GMT
+     */
+    public const FORMAT_FULL = 'l, F j, Y @ g:i a T';
 
     /**
      * @var string
@@ -99,7 +108,7 @@ class DateTimeHelper
     public static function createTodaysDateWithSuppliedTime(?DateTimeInterface $then = null, string $tz = 'America/Chicago', ?DateTimeInterface $now = null, ?int $hour = null, ?int $minute = null, ?int $second = null): DateTime
     {
         if (is_null($then)) {
-            $then = new DateTimeImmutable();
+            $then = static::getClock()->now();
         }
 
         $then = $then->setTimezone(new DateTimeZone($tz));
@@ -113,7 +122,7 @@ class DateTimeHelper
     public static function create(string $tz = 'America/Chicago', ?DateTimeInterface $now = null, ?int $year = null, ?int $month = null, ?int $day = null, ?int $hour = null, ?int $minute = null, ?int $second = null): DateTime|bool
     {
         $timeZone = new DateTimeZone($tz);
-        $now ??= new DateTime(timezone: $timeZone);
+        $now ??= static::getClock()->now()->setTimezone(timezone: $timeZone);
         if (is_null($year)) {
             $year = static::getYearFromDate($now);
         }
@@ -199,7 +208,7 @@ class DateTimeHelper
 
     public static function getNowUTC(): DateTimeImmutable
     {
-        return (new DateTimeImmutable())->setTimezone(static::getTimeZoneUTC());
+        return static::getClock()->now()->setTimezone(static::getTimeZoneUTC());
     }
 
     public static function getTimeZoneUTC(): DateTimeZone
@@ -310,7 +319,7 @@ class DateTimeHelper
 
     public static function getNowChicago(): DateTimeImmutable
     {
-        return (new DateTimeImmutable())->setTimezone(static::getTimeZoneChicago());
+        return static::getClock()->now()->setTimezone(static::getTimeZoneChicago());
     }
 
     public static function getTimeZoneChicago(): DateTimeZone
@@ -377,6 +386,12 @@ class DateTimeHelper
     public static function isMinutesNoTensToValue(DateTimeInterface $dateTime, int|array $allowedMinutes): array
     {
         $allowedMinutes = Arr::wrap($allowedMinutes);
+        foreach ($allowedMinutes as $minute) {
+            if ($minute >= 10) {
+                throw new InvalidArgumentException('Minutes should be less than 10');
+            }
+        }
+
         $minute = DateTimeHelper::getMinuteFromDate($dateTime) % 10;
         $return = [
             'minute' => $minute,
@@ -394,6 +409,7 @@ class DateTimeHelper
      * @param int|int[] $allowedMinutes
      *
      * @throws Exception
+     * @throws InvalidArgumentException
      */
     public static function increaseMinutesNoTensToValue(DateTimeInterface $dateTime, int|array $allowedMinutes): DateTimeInterface
     {
@@ -552,5 +568,16 @@ class DateTimeHelper
     public static function getDayOfWeekEnumFromDate(DateTimeInterface $dateTime): DayOfWeek
     {
         return DayOfWeek::from(static::getDayOfWeekFromDate(dateTime: $dateTime));
+    }
+
+    public static function getClock(DateTimeZone|string|null $timezone = null)
+    {
+        $clock = Clock::get();
+
+        if (!is_null($timezone)) {
+            $clock->withTimeZone($timezone);
+        }
+
+        return $clock;
     }
 }
