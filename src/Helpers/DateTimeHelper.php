@@ -270,6 +270,14 @@ class DateTimeHelper
 
         /** @var DateTimeInterface $date */
         $date = Arr::first($arguments);
+
+        if(is_null($date)) {
+            if ($toInt) {
+                return null;
+            } else {
+                return '';
+            }
+        }
         $formatted = $date->format($part);
         if ($toInt) {
             return (int) $formatted;
